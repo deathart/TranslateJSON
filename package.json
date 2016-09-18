@@ -14,7 +14,10 @@
     "url": "git+https://github.com/deatahrt/TranslateJSON.git"
   },
   "keywords": [
-    "translate"
+    "translate",
+    "TranslateJSON",
+    "NodeTranslate",
+    "NodeJSON"
   ],
   "author": "deathart <deathart@hotmail.fr> (https://github.com/deathart)",
   "license": "MIT",

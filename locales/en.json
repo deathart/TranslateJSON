@@ -1,0 +1,5 @@
+{
+    "username":"xyz",
+    "test" : "Hello",
+    "test_replace" : "Hello %s"
+}
