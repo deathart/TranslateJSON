@@ -2,7 +2,8 @@
 
 Usage : 
 
-var Trans = require('./translate.js');
+var Trans = require('translatejson');
+
 var Translate = new Trans("fr");
 
 Translate.GetLine("test");
