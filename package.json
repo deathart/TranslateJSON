@@ -1,6 +1,6 @@
 {
   "name": "translatejson",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Translate node APP JSON",
   "main": "translate.js",
   "scripts": {
