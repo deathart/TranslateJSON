@@ -1,7 +1,7 @@
 'use strict';
 
-var Trans = require('./translate.js');
-var option_for_translate = {
+var Trans = require('./translate.js'),
+    option_for_translate = {
     Directory : "./locales/",
     exts : ".json",
     debug : false
