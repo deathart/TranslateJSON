@@ -1,5 +1,9 @@
 {
     "username":"xyz",
     "test" : "Hello",
-    "test_replace" : "Hello %s"
+    "test_replace" : "Hello %s",
+    "block_test" : {
+        "first_block" : "[EN]block",
+        "deux_block" : "[EN]block %s test"
+    }
 }
