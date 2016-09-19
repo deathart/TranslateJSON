@@ -1,7 +1,7 @@
 'use strict';
 
 var Trans = require('./translate.js');
-var Translate = new Trans("fr");
+var Translate = new Trans("en");
 
 //Normal
 console.log("Value for 'test_replace' : " + Translate.GetLine("test_replace", "deathart"));
