@@ -1,7 +1,12 @@
 'use strict';
 
 var Trans = require('./translate.js');
-var Translate = new Trans("en");
+var option_for_translate = {
+    Directory : "./locales/",
+    exts : ".json",
+    debug : false
+}
+var Translate = new Trans("en", option_for_translate);
 
 //Normal
 console.log("Value for 'test_replace' : " + Translate.GetLine("test_replace", "deathart"));

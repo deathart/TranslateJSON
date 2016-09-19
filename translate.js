@@ -1,17 +1,20 @@
 'use strict';
 var fs = require('fs');
 
-module.exports = function (files, exts = ".json", Directory = "./locales/", deb = false) {
+module.exports = function (files, params) {
 
-    this.location = Directory;
+    this.location = params.Directory || "./locales/";
     this.file = files;
-    this.ext = exts;
-    this.debug = deb;
+    this.ext = params.exts || ".json";
+    this.debug = params.debug || false;
     this.loc = this.location + this.file + this.ext;
     this.error = false;
 
     try {
         this.data = fs.readFileSync(this.loc);
+        if (this.debug == true) {
+            console.info('\x1B[31m', "[DEBUG] : " + this.loc + " load success !" ,'\x1B[0m\r\n');
+        }
     } catch (err) {
         this.error = true;
         if (err.code === 'ENOENT') {
@@ -26,13 +29,13 @@ module.exports = function (files, exts = ".json", Directory = "./locales/", deb 
         if (this.error == false) {
             if (replace != null) {
                 if (this.debug == true) {
-                    console.log(JSON.parse(this.data)[Lines].replace('%s', replace));
+                    console.info('\x1B[31m', "[DEBUG] : " + JSON.parse(this.data)[Lines].replace('%s', replace) ,'\x1B[0m\r\n');
                 }
                 return JSON.parse(this.data)[Lines].replace('%s', replace);
             }
             else {
                 if (this.debug == true) {
-                    console.log(JSON.parse(this.data)[Lines]);
+                    console.log('\x1B[31m', "[DEBUG] : " + JSON.parse(this.data)[Lines] ,'\x1B[0m\r\n');
                 }
                 return JSON.parse(this.data)[Lines];
             }
@@ -43,13 +46,13 @@ module.exports = function (files, exts = ".json", Directory = "./locales/", deb 
         if (this.error == false) {
             if (replace != null) {
                 if (this.debug == true) {
-                    console.log(JSON.parse(this.data)[Block][Lines].replace('%s', replace));
+                    console.log('\x1B[31m', "[DEBUG] : " + JSON.parse(this.data)[Block][Lines].replace('%s', replace) ,'\x1B[0m\r\n');
                 }
                 return JSON.parse(this.data)[Block][Lines].replace('%s', replace);
             }
             else {
                 if (this.debug == true) {
-                    console.log(JSON.parse(this.data)[Block][Lines]);
+                    console.log('\x1B[31m', "[DEBUG] : " + JSON.parse(this.data)[Block][Lines] ,'\x1B[0m\r\n');
                 }
                 return JSON.parse(this.data)[Block][Lines];
             }
