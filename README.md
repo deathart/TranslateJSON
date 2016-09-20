@@ -1,16 +1,16 @@
 # TranslateJSON
-![npm](https://nodei.co/npm/translatejson.png?downloads=true&downloadRank=true)
+[![NPM](https://www.npmjs.com/package/translatejson)](https://nodei.co/npm/translatejson.png?downloads=true)
 
 Usage : 
 ```JavaScript
-var Trans = require('./translate.js'),
+var translatejson = require('translatejson'),
     option_for_translate = {
     Directory : "./locales/",
     exts : ".json",
     debug : false
 }
 
-var Translate = new Trans("en", option_for_translate);
+var Translate = new translatejson("en", option_for_translate);
 ```
 
 >//Normal
