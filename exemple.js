@@ -15,5 +15,6 @@ console.log("Value for 'username' : " + Translate.GetLine("username"));
 console.log("Value for 'first_block' : " + Translate.GetBlock("first_block", "block_test"));
 console.log("Value for 'deux_block' : " + Translate.GetBlock("deux_block", "block_test", "deathart"));
 
-//Set Line
-Translate.SetLine("test_set", "settings add");
+//ADD
+var SetLine = {"test_set" : "settings add", "blabla_set" : "blabla_set is OK"};
+Translate.Add(SetLine);
