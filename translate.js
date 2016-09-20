@@ -13,7 +13,7 @@ module.exports = function (files, params) {
     try {
         this.data = fs.readFileSync(this.loc);
         if (this.debug == true) {
-            console.info('\x1B[31m', "[DEBUG] : " + this.loc + " load success !" ,'\x1B[0m\r\n');
+            console.info('\x1B[31m', "[DEBUG] : " + this.loc + " load success !\r\n content : " + this.data ,'\x1B[0m\r\n');
         }
     } catch (err) {
         this.error = true;

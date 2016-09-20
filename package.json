@@ -1,6 +1,6 @@
 {
   "name": "translatejson",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "description": "Translate node APP JSON",
   "main": "translate.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deatahrt/TranslateJSON.git"
+    "url": "git+https://github.com/deathart/TranslateJSON.git"
   },
   "keywords": [
     "translate",
@@ -22,7 +22,7 @@
   "author": "deathart <deathart@hotmail.fr> (https://github.com/deathart)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/deatahrt/TranslateJSON/issues"
+    "url": "https://github.com/deathart/TranslateJSON/issues"
   },
-  "homepage": "https://github.com/deatahrt/TranslateJSON#readme"
+  "homepage": "https://github.com/deathart/TranslateJSON#readme"
 }
