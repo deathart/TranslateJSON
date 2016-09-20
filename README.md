@@ -25,3 +25,8 @@ console.log("Value for 'username' : " + Translate.GetLine("username"));
 console.log("Value for 'first_block' : " + Translate.GetBlock("first_block", "block_test"));
 console.log("Value for 'deux_block' : " + Translate.GetBlock("deux_block", "block_test", "deathart"));
 ```
+
+>//Add line
+```JavaScript
+Translate.SetLine("test_set", "settings add");
+```
