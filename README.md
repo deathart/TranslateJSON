@@ -1,5 +1,5 @@
 # TranslateJSON
-[![NPM](https://www.npmjs.com/package/translatejson)](https://nodei.co/npm/translatejson.png?downloads=true)
+<a href="https://www.npmjs.com/package/translatejson"><img src="https://nodei.co/npm/translatejson.png?downloads=true" /></a>
 
 Usage : 
 ```JavaScript
