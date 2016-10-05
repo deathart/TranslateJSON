@@ -31,3 +31,8 @@ console.log("Value for 'deux_block' : " + Translate.GetBlock("deux_block", "bloc
 var SetLine = {"test_set" : "settings add", "blabla_set" : "blabla_set is OK"};
 Translate.Add(SetLine);
 ```
+
+>//Delete line
+```JavaScript
+Translate.Del("test_replace");
+```

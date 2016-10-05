@@ -16,5 +16,7 @@ console.log("Value for 'first_block' : " + Translate.GetBlock("first_block", "bl
 console.log("Value for 'deux_block' : " + Translate.GetBlock("deux_block", "block_test", "deathart"));
 
 //ADD
-var SetLine = {"test_set" : "settings add", "blabla_set" : "blabla_set is OK"};
-Translate.Add(SetLine);
+Translate.Add({"test_set" : "settings add", "blabla_set" : "blabla_set is OK"});
+
+//DELETE
+Translate.Del("test_replace");
