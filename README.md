@@ -1,10 +1,10 @@
-#TranslateJSON
+# TranslateJSON
 Json translation system
 
-#Install
+# Install
 `npm install --save translatejson`
 
-#Usage : 
+# Usage : 
 ```JavaScript
 const translatejson = require('translatejson'),
     option_for_translate = {
