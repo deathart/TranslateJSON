@@ -13,14 +13,14 @@ module.exports = function (files, params) {
     try {
         this.data = fs.readFileSync(this.loc);
         if (this.debug == true) {
-            console.info('\x1B[31m', "[DEBUG] : " + this.loc + " load success !\r\n content : " + this.data ,'\x1B[0m\r\n');
+            console.info("[DEBUG] : " + this.loc + " load success !\r\n content : " + this.data);
         }
     } catch (err) {
         this.error = true;
         if (err.code === 'ENOENT') {
-            console.log('\x1B[31m', '[ERROR] : Translation file not found ! (' + this.loc + ')' ,'\x1B[0m\r\n');
+            console.error('[ERROR] : Translation file not found ! (' + this.loc + ')');
         } else {
-            console.log('\x1B[31m', '[ERROR] : (' + err + ')' ,'\x1B[0m\r\n');
+            console.error('[ERROR] : (' + err + ')');
         }
     }
 
@@ -29,13 +29,13 @@ module.exports = function (files, params) {
         if (this.error == false) {
             if (replace != null) {
                 if (this.debug == true) {
-                    console.info('\x1B[31m', "[DEBUG] : " + JSON.parse(this.data)[Lines].replace('%s', replace) ,'\x1B[0m\r\n');
+                    console.debug("[DEBUG] : " + JSON.parse(this.data)[Lines].replace('%s', replace));
                 }
                 return JSON.parse(this.data)[Lines].replace('%s', replace);
             }
             else {
                 if (this.debug == true) {
-                    console.log('\x1B[31m', "[DEBUG] : " + JSON.parse(this.data)[Lines] ,'\x1B[0m\r\n');
+                    console.debug("[DEBUG] : " + JSON.parse(this.data)[Lines]);
                 }
                 return JSON.parse(this.data)[Lines];
             }
@@ -46,13 +46,13 @@ module.exports = function (files, params) {
         if (this.error == false) {
             if (replace != null) {
                 if (this.debug == true) {
-                    console.log('\x1B[31m', "[DEBUG] : " + JSON.parse(this.data)[Block][Lines].replace('%s', replace) ,'\x1B[0m\r\n');
+                    console.debug("[DEBUG] : " + JSON.parse(this.data)[Block][Lines].replace('%s', replace));
                 }
                 return JSON.parse(this.data)[Block][Lines].replace('%s', replace);
             }
             else {
                 if (this.debug == true) {
-                    console.log('\x1B[31m', "[DEBUG] : " + JSON.parse(this.data)[Block][Lines] ,'\x1B[0m\r\n');
+                    console.debug("[DEBUG] : " + JSON.parse(this.data)[Block][Lines]);
                 }
                 return JSON.parse(this.data)[Block][Lines];
             }
@@ -66,7 +66,7 @@ module.exports = function (files, params) {
         for(var i in json_value) {
             jsonObj[i] = json_value[i];
             if (this.debug == true) {
-                console.log('\x1B[31m', "[DEBUG] : " + JSON.stringify(json_value) ,'\x1B[0m\r\n');
+                console.debug("[DEBUG] : " + JSON.stringify(json_value));
             }
         }
 
@@ -83,11 +83,11 @@ module.exports = function (files, params) {
         fs.writeFile(this.loc, JSON.stringify(jsonObj, null, 2), function(err) {
             if (err != null) {
                 if (this.debug == true) {
-                    console.log('\x1B[31m', "[DEBUG] : Line " + json_value + " is delete" ,'\x1B[0m\r\n');
+                    console.debug("[DEBUG] : Line " + json_value + " is delete");
                 }
             }
             else {
-                console.log('\x1B[31m', "[ERROR] : Line " + json_value + " not found" ,'\x1B[0m\r\n');
+                console.error("[ERROR] : Line " + json_value + " not found");
             }
         });
 
