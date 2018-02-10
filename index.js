@@ -31,13 +31,23 @@ module.exports = function (files, params) {
                 if (this.debug == true) {
                     console.debug("[DEBUG] : " + JSON.parse(this.data)[Lines].replace('%s', replace));
                 }
-                return JSON.parse(this.data)[Lines].replace('%s', replace);
+                try {
+                    return JSON.parse(this.data)[Lines].replace('%s', replace)
+                }
+                catch(error) {
+                    return false;
+                }
             }
             else {
-                if (this.debug == true) {
-                    console.debug("[DEBUG] : " + JSON.parse(this.data)[Lines]);
+                if (typeof JSON.parse(this.data)[Lines] !== "undefined") {
+                    return JSON.parse(this.data)[Lines];
+                    if (this.debug == true) {
+                        console.debug("[DEBUG] : " + JSON.parse(this.data)[Lines]);
+                    }
                 }
-                return JSON.parse(this.data)[Lines];
+                else {
+                    return false;
+                }
             }
         }
     }
@@ -48,13 +58,23 @@ module.exports = function (files, params) {
                 if (this.debug == true) {
                     console.debug("[DEBUG] : " + JSON.parse(this.data)[Block][Lines].replace('%s', replace));
                 }
-                return JSON.parse(this.data)[Block][Lines].replace('%s', replace);
+                try{
+                    return JSON.parse(this.data)[Block][Lines].replace('%s', replace);
+                }
+                catch(error) {
+                    return false;
+                }
             }
             else {
                 if (this.debug == true) {
                     console.debug("[DEBUG] : " + JSON.parse(this.data)[Block][Lines]);
                 }
-                return JSON.parse(this.data)[Block][Lines];
+                if(typeof JSON.parse(this.data)[Block] !== "undefined" && typeof JSON.parse(this.data)[Block][Lines] !== "undefined") {
+                    return JSON.parse(this.data)[Block][Lines];
+                }
+                else {
+                    return false;
+                }
             }
         }
     }
@@ -78,18 +98,23 @@ module.exports = function (files, params) {
 
         var jsonObj = JSON.parse(this.data);
 
-        delete jsonObj[json_value];
+        if (typeof jsonObj[json_value] !== "undefined") {
+            delete jsonObj[json_value];
 
-        fs.writeFile(this.loc, JSON.stringify(jsonObj, null, 2), function(err) {
-            if (err != null) {
-                if (this.debug == true) {
-                    console.debug("[DEBUG] : Line " + json_value + " is delete");
+            fs.writeFile(this.loc, JSON.stringify(jsonObj, null, 2), function(err) {
+                if(!err) {
+                    if (this.debug == true) {
+                        console.debug("[DEBUG] : Line " + json_value + " is delete");
+                    }
                 }
-            }
-            else {
-                console.error("[ERROR] : Line " + json_value + " not found");
-            }
-        });
+                else {
+                    console.error("[ERROR] : Line " + json_value + " not found");
+                }
+            });
+        }
+        else {
+            return false;
+        }
 
     }
 

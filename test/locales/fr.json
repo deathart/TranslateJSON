@@ -1,5 +1,4 @@
 {
-    "username":"abc",
     "test" : "Bonjour",
     "test_replace" : "Bonjour %s",
     "block_test" : {
