@@ -1,29 +1,31 @@
-# TranslateJSON
-<a href="https://www.npmjs.com/package/translatejson"><img src="https://nodei.co/npm/translatejson.png?downloads=true" /></a>
+#TranslateJSON
+Json translation system
 
-Usage : 
+#Install
+`npm install --save translatejson`
+
+#Usage : 
 ```JavaScript
-var translatejson = require('translatejson'),
+const translatejson = require('translatejson'),
     option_for_translate = {
     Directory : "./locales/",
     exts : ".json",
     debug : false
 }
 
-var Translate = new translatejson("en", option_for_translate);
+let Translate = new translatejson("en", option_for_translate);
 ```
 
 >//Normal
 ```JavaScript
-console.log("Value for 'test_replace' : " + Translate.GetLine("test_replace", "deathart"));
-console.log("Value for 'test' : " + Translate.GetLine("test"));
-console.log("Value for 'username' : " + Translate.GetLine("username"));
+Translate.GetLine("test_replace", "deathart");
+Translate.GetLine("test");
 ```
 
 >//Block
 ```JavaScript
-console.log("Value for 'first_block' : " + Translate.GetBlock("first_block", "block_test"));
-console.log("Value for 'deux_block' : " + Translate.GetBlock("deux_block", "block_test", "deathart"));
+Translate.GetBlock("first_block", "block_test");
+Translate.GetBlock("deux_block", "block_test", "deathart");
 ```
 
 >//Add line
