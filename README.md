@@ -1,4 +1,4 @@
-[![Travis](https://api.travis-ci.org/deathart/TranslateJSON.svg?branch=master)](https://travis-ci.org/deathart/TranslateJSON)
+[![Travis](https://img.shields.io/travis/deathart/TranslateJSON.svg?style=for-the-badge)](https://travis-ci.org/deathart/TranslateJSON)[![npm](https://img.shields.io/npm/v/translatejson.svg?style=for-the-badge)](https://www.npmjs.com/package/translatejson)[![npm](https://img.shields.io/npm/l/translatejson.svg?style=for-the-badge)](https://www.npmjs.com/package/translatejson)
 # TranslateJSON
 Translation and translation management system using json files
 
