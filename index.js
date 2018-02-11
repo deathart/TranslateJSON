@@ -1,31 +1,33 @@
-'use strict';
 var fs = require('fs');
 
-module.exports = function (files, params) {
-    
-    this.file = files;
-    this.error = false;
-    this.location = params.Directory || "./locales/";
-    this.ext = params.exts || ".json";
-    this.debug = params.debug || false;
-    this.loc = this.location + this.file + this.ext;
+module.exports = class Translate {
 
-    try {
-        this.data = fs.readFileSync(this.loc);
-        if (this.debug == true) {
-            console.info("[DEBUG] : " + this.loc + " load success !\r\n content : " + this.data);
+    constructor(files, params) {
+
+        this.file = files;
+        this.error = false;
+        this.location = params.Directory || "./locales/";
+        this.ext = params.exts || ".json";
+        this.debug = params.debug || false;
+        this.loc = this.location + this.file + this.ext;
+
+        try {
+            this.data = fs.readFileSync(this.loc);
+            if (this.debug == true) {
+                console.info("[DEBUG] : " + this.loc + " load success !\r\n content : " + this.data);
+            }
+        } catch (err) {
+            this.error = true;
+            if (err.code === 'ENOENT') {
+                console.error('[ERROR] : Translation file not found ! (' + this.loc + ')');
+            } else {
+                console.error('[ERROR] : (' + err + ')');
+            }
         }
-    } catch (err) {
-        this.error = true;
-        if (err.code === 'ENOENT') {
-            console.error('[ERROR] : Translation file not found ! (' + this.loc + ')');
-        } else {
-            console.error('[ERROR] : (' + err + ')');
-        }
+
     }
 
-    this.GetLine = function (Lines, replace = null) {
-
+    GetLine(Lines, replace = null) {
         if (this.error == false) {
             if (replace != null) {
                 if (this.debug == true) {
@@ -52,7 +54,7 @@ module.exports = function (files, params) {
         }
     }
 
-    this.GetBlock = function (Lines, Block, replace = null) {
+    GetBlock(Lines, Block, replace = null) {
         if (this.error == false) {
             if (replace != null) {
                 if (this.debug == true) {
@@ -79,8 +81,7 @@ module.exports = function (files, params) {
         }
     }
 
-    this.SelLine = function (json_value) {
-        
+    SelLine(json_value) {
         var jsonObj = JSON.parse(this.data);
 
         for(var i in json_value) {
@@ -91,11 +92,9 @@ module.exports = function (files, params) {
         }
 
         fs.writeFileSync(this.loc, JSON.stringify(jsonObj, null, 2));
-
     }
 
-    this.Del = function (json_value) {
-
+    Del(json_value) {
         var jsonObj = JSON.parse(this.data);
 
         if (typeof jsonObj[json_value] !== "undefined") {
@@ -115,9 +114,6 @@ module.exports = function (files, params) {
         else {
             return false;
         }
-
     }
-
-    return this;
 
 }
