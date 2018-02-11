@@ -11,7 +11,7 @@ module.exports = class Translate {
 
 		try {
 			this.data = fs.readFileSync(this.loc)
-			if (this.debug == true) {
+			if (this.debug === true) {
 				console.info(`[DEBUG] : ${this.loc} load success !\r\n content : ${this.data}`)
 			}
 		} catch (err) {
@@ -25,22 +25,22 @@ module.exports = class Translate {
 	}
 
 	GetLine(Lines, replace = null) {
-		if (this.error == false) {
-			if (replace != null) {
-				if (this.debug == true) {
-					console.debug(`[DEBUG] : ${JSON.parse(this.data)[Lines].replace("%s", replace)}`)
-				}
+		if (this.error === false) {
+			if (replace !== null) {
 				try {
+					if (this.debug === true) {
+						console.debug(`[DEBUG] : ${JSON.parse(this.data)[Lines].replace("%s", replace)}`)
+					}
 					return JSON.parse(this.data)[Lines].replace("%s", replace)
 				} catch (error) {
 					return false
 				}
 			} else {
 				if (typeof JSON.parse(this.data)[Lines] !== "undefined") {
-					return JSON.parse(this.data)[Lines]
-					if (this.debug == true) {
+					if (this.debug === true) {
 						console.debug(`[DEBUG] : ${JSON.parse(this.data)[Lines]}`)
 					}
+					return JSON.parse(this.data)[Lines]
 				}
 
 				return false
@@ -49,21 +49,21 @@ module.exports = class Translate {
 	}
 
 	GetBlock(Lines, Block, replace = null) {
-		if (this.error == false) {
-			if (replace != null) {
-				if (this.debug == true) {
-					console.debug(`[DEBUG] : ${JSON.parse(this.data)[Block][Lines].replace("%s", replace)}`)
-				}
+		if (this.error === false) {
+			if (replace !== null) {
 				try {
+					if (this.debug === true) {
+						console.debug(`[DEBUG] : ${JSON.parse(this.data)[Block][Lines].replace("%s", replace)}`)
+					}
 					return JSON.parse(this.data)[Block][Lines].replace("%s", replace)
 				} catch (error) {
 					return false
 				}
 			} else {
-				if (this.debug == true) {
-					console.debug(`[DEBUG] : ${JSON.parse(this.data)[Block][Lines]}`)
-				}
 				if (typeof JSON.parse(this.data)[Block] !== "undefined" && typeof JSON.parse(this.data)[Block][Lines] !== "undefined") {
+					if (this.debug === true) {
+						console.debug(`[DEBUG] : ${JSON.parse(this.data)[Block][Lines]}`)
+					}
 					return JSON.parse(this.data)[Block][Lines]
 				}
 
@@ -77,7 +77,7 @@ module.exports = class Translate {
 
 		for (const i in json_value) {
 			jsonObj[i] = json_value[i]
-			if (this.debug == true) {
+			if (this.debug === true) {
 				console.debug(`[DEBUG] : ${JSON.stringify(json_value)}`)
 			}
 		}
@@ -93,7 +93,7 @@ module.exports = class Translate {
 
 			fs.writeFile(this.loc, JSON.stringify(jsonObj, null, 2), function (err) {
 				if (!err) {
-					if (this.debug == true) {
+					if (this.debug === true) {
 						console.debug(`[DEBUG] : Line ${json_value} is delete`)
 					}
 				} else {
