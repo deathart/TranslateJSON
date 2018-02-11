@@ -1,6 +1,6 @@
-![travis](https://api.travis-ci.org/deathart/TranslateJSON.svg?branch=master "travis")
+[![Travis](https://api.travis-ci.org/deathart/TranslateJSON.svg?branch=master)](https://travis-ci.org/deathart/TranslateJSON)
 # TranslateJSON
-Json translation system
+Translation and translation management system using json files
 
 # Install
 `npm install --save translatejson`

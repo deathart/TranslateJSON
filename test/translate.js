@@ -18,14 +18,6 @@ describe ('Get', function() {
             expect(Translate.GetLine("test_replace", "deathart")).to.equal('Hello deathart');
             done();
         });
-        it('errornotreplace', function(done) {
-            expect(Translate.GetLine("noexists")).to.be.false;
-            done();
-        });
-        it('errorreplace', function(done) {
-            expect(Translate.GetLine("noexists", "error")).to.be.false;
-            done();
-        });
     });
 
     describe ('Block', function() {
@@ -37,20 +29,12 @@ describe ('Get', function() {
             expect(Translate.GetBlock("deux_block", "block_test", "deathart")).to.equal('[EN]block deathart test');
             done();
         });
-        it('error', function(done) {
-            expect(Translate.GetBlock("c_block", "block_test_500")).to.be.false;
-            done();
-        });
     });
 });
 
 describe ('Remove', function() {
     it('Remove', function(done) {
         expect(Translate.Del("test")).to.be.undefined;
-        done();
-    });
-    it('RemoveError', function(done) {
-        expect(Translate.Del("test2")).to.be.false;
         done();
     });
 });
