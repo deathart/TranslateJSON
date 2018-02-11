@@ -2,9 +2,7 @@ const expect  = require('chai').expect;
 const translatejson = require('../index');
 
 let Translate = new translatejson("en", {
-    Directory : "./test/locales/",
-    exts : ".json",
-    debug : false
+    Directory : "./test/locales/"
 });
 
 describe ('GetError', function() {
