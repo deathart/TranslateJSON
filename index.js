@@ -1,7 +1,7 @@
 const fs = require("fs")
 
 module.exports = class Translate {
-	constructor(files, params) {
+	constructor(files, params = {}) {
 		this.file = files
 		this.error = false
 		this.location = params.Directory || "./locales/"
