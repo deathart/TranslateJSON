@@ -46,6 +46,7 @@ module.exports = class Translate {
 				return false
 			}
 		}
+		return false
 	}
 
 	GetBlock(Lines, Block, replace = null) {
@@ -70,35 +71,40 @@ module.exports = class Translate {
 				return false
 			}
 		}
+		return false
 	}
 
-	SelLine(json_value) {
+	SelLine(key, value) {
 		const jsonObj = JSON.parse(this.data)
 
-		for (const i in json_value) {
-			jsonObj[i] = json_value[i]
-			if (this.debug === true) {
-				console.debug(`[DEBUG] : ${JSON.stringify(json_value)}`)
-			}
-		}
+		jsonObj[key] = value
 
-		fs.writeFileSync(this.loc, JSON.stringify(jsonObj, null, 2))
+		try {
+			fs.writeFileSync(this.loc, JSON.stringify(jsonObj, null, 2))
+			if (this.debug === true) {
+				console.debug(`[DEBUG] : ${key} : ${value}`)
+			}
+			return true
+		} catch (err) {
+			return false
+		}
 	}
 
-	Del(json_value) {
+	Del(json_value = {}) {
 		const jsonObj = JSON.parse(this.data)
 
 		if (typeof jsonObj[json_value] !== "undefined") {
 			delete jsonObj[json_value]
 
-			fs.writeFile(this.loc, JSON.stringify(jsonObj, null, 2), function (err) {
+			fs.writeFile(this.loc, JSON.stringify(jsonObj, null, 2), (err) => {
 				if (!err) {
 					if (this.debug === true) {
 						console.debug(`[DEBUG] : Line ${json_value} is delete`)
 					}
-				} else {
-					console.error(`[ERROR] : Line ${json_value} not found`)
+					return true
 				}
+				console.error(`[ERROR] : Line ${json_value} not found`)
+				return false
 			})
 		} else {
 			return false
