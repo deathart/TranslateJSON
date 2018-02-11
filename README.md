@@ -3,10 +3,12 @@
 Translation and translation management system using json files
 
 # Install
-`npm install --save translatejson`
+```shell
+npm install --save translatejson
+```
 
 # Usage : 
-```JavaScript
+```js
 const translatejson = require('translatejson');
 
 let Translate = new translatejson("en");
