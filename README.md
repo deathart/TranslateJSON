@@ -1,3 +1,4 @@
+![travis](https://api.travis-ci.org/deathart/TranslateJSON.svg?branch=master "travis")
 # TranslateJSON
 Json translation system
 
