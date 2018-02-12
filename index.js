@@ -5,14 +5,10 @@ module.exports = class Translate {
 		this.file = files
 		this.error = false
 		this.location = params.Directory || "./locales/"
-		this.debug = params.debug || false
 		this.loc = this.location + this.file + ".json"
 
 		try {
 			this.data = fs.readFileSync(this.loc)
-			if (this.debug === true) {
-				console.info(`[DEBUG] : ${this.loc} load success !\r\n content : ${this.data}`)
-			}
 		} catch (err) {
 			this.error = true
 			if (err.code === "ENOENT") {
@@ -27,18 +23,12 @@ module.exports = class Translate {
 		if (this.error === false) {
 			if (replace !== null) {
 				try {
-					if (this.debug === true) {
-						console.debug(`[DEBUG] : ${JSON.parse(this.data)[Lines].replace("%s", replace)}`)
-					}
 					return JSON.parse(this.data)[Lines].replace("%s", replace)
 				} catch (error) {
 					return false
 				}
 			} else {
 				if (typeof JSON.parse(this.data)[Lines] !== "undefined") {
-					if (this.debug === true) {
-						console.debug(`[DEBUG] : ${JSON.parse(this.data)[Lines]}`)
-					}
 					return JSON.parse(this.data)[Lines]
 				}
 
@@ -62,15 +52,9 @@ module.exports = class Translate {
 
             if(result) {
                 if (replaces) {
-                    if (this.debug === true) {
-                        console.debug(`[DEBUG] : ${result.replace("%s", replaces)}`)
-                    }
                     return result.replace("%s", replaces)
                 }
                 else {
-                    if (this.debug === true) {
-                        console.debug(`[DEBUG] : ${result}`)
-                    }
                     return result;
                 }
             }
@@ -92,9 +76,6 @@ module.exports = class Translate {
 
 		try {
 			fs.writeFileSync(this.loc, JSON.stringify(jsonObj, null, 2))
-			if (this.debug === true) {
-				console.debug(`[DEBUG] : ${key} : ${value}`)
-			}
 			return true
 		} catch (err) {
 			return false
@@ -109,9 +90,6 @@ module.exports = class Translate {
 
 			fs.writeFile(this.loc, JSON.stringify(jsonObj, null, 2), (err) => {
 				if (!err) {
-					if (this.debug === true) {
-						console.debug(`[DEBUG] : Line ${json_value} is delete`)
-					}
 					return true
 				}
 				console.error(`[ERROR] : Line ${json_value} not found`)
