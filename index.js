@@ -74,7 +74,7 @@ module.exports = class Translate {
 		return false
 	}
 
-	SelLine(key, value) {
+	SetLine(key, value) {
 		const jsonObj = JSON.parse(this.data)
 
 		jsonObj[key] = value

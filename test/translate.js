@@ -39,7 +39,7 @@ describe("Remove", () => {
 
 describe("Set", () => {
 	it("Set", (done) => {
-		expect(Translate.SelLine("test", "Hello")).to.be.true
+		expect(Translate.SetLine("test", "Hello")).to.be.true
 		done()
 	})
 })

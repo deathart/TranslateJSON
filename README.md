@@ -22,7 +22,7 @@ Translate.GetBlock("first_block", "block_test");
 Translate.GetBlock("deux_block", "block_test", "deathart");
 
 //Add line
-Translate.SelLine("test_set", "settings add");
+Translate.SetLine("test_set", "settings add");
 
 //Delete line
 Translate.Del("test_replace");
