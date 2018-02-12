@@ -5,7 +5,6 @@ const Translate = new translatejson("en", {
 	Directory: "./test/locales/",
 })
 
-
 describe("Get", () => {
 	describe("Normal", () => {
 		it("NotReplace", (done) => {
@@ -20,11 +19,11 @@ describe("Get", () => {
 
 	describe("Block", () => {
 		it("NotReplace", (done) => {
-			expect(Translate.GetBlock("first_block", "block_test")).to.equal("[EN]block")
+			expect(Translate.GetBlock("block_test.first_block")).to.equal("[EN]block")
 			done()
 		})
 		it("Replace", (done) => {
-			expect(Translate.GetBlock("deux_block", "block_test", "deathart")).to.equal("[EN]block deathart test")
+			expect(Translate.GetBlock("block_test.deux_block", "deathart")).to.equal("[EN]block deathart test")
 			done()
 		})
 	})

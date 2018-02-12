@@ -49,30 +49,34 @@ module.exports = class Translate {
 		return false
 	}
 
-	GetBlock(Lines, Block, replace = null) {
-		if (this.error === false) {
-			if (replace !== null) {
-				try {
-					if (this.debug === true) {
-						console.debug(`[DEBUG] : ${JSON.parse(this.data)[Block][Lines].replace("%s", replace)}`)
-					}
-					return JSON.parse(this.data)[Block][Lines].replace("%s", replace)
-				} catch (error) {
-					return false
-				}
-			} else {
-				if (typeof JSON.parse(this.data)[Block] !== "undefined" && typeof JSON.parse(this.data)[Block][Lines] !== "undefined") {
-					if (this.debug === true) {
-						console.debug(`[DEBUG] : ${JSON.parse(this.data)[Block][Lines]}`)
-					}
-					return JSON.parse(this.data)[Block][Lines]
-				}
+	GetBlock(Lines, replaces = null) {
+        if (this.error === false) {
 
-				return false
-			}
-		}
-		return false
+            let result = Lines.split('.').reduce(function(prev, curr) {
+                if(prev) {
+                    return prev[curr];
+                }
+                else {
+                    return false;
+                }
+            }, JSON.parse(this.data) || self);
+
+            if(result) {
+                if (replaces) {
+                    return result.replace("%s", replaces)
+                }
+                return result;
+            }
+            return false;
+        }
+        return false
 	}
+
+    resolve(path, obj) {
+        return path.split('.').reduce(function(prev, curr) {
+            return prev ? prev[curr] : null
+        }, obj || self)
+    }
 
 	SetLine(key, value) {
 		const jsonObj = JSON.parse(this.data)

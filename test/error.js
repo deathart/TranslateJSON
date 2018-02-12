@@ -18,11 +18,11 @@ describe("GetError", () => {
 	})
 	describe("Block", () => {
 		it("notreplace", (done) => {
-			expect(Translate.GetBlock("c_block", "block_test_500")).to.be.false
+			expect(Translate.GetBlock("c_block.block_test_500")).to.be.false
 			done()
 		})
 		it("replace", (done) => {
-			expect(Translate.GetBlock("d_block", "block_test_a", "deathart")).to.be.false
+			expect(Translate.GetBlock("d_block.block_test_a", "deathart")).to.be.false
 			done()
 		})
 	})
