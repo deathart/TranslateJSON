@@ -63,9 +63,17 @@ module.exports = class Translate {
 
             if(result) {
                 if (replaces) {
+                    if (this.debug === true) {
+                        console.debug(`[DEBUG] : ${result.replace("%s", replaces)}`)
+                    }
                     return result.replace("%s", replaces)
                 }
-                return result;
+                else {
+                    if (this.debug === true) {
+                        console.debug(`[DEBUG] : ${result}`)
+                    }
+                    return result;
+                }
             }
             return false;
         }
