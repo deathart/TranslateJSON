@@ -18,8 +18,8 @@ Translate.GetLine("test_replace", "deathart");
 Translate.GetLine("test");
 
 //Block
-Translate.GetBlock("first_block", "block_test");
-Translate.GetBlock("deux_block", "block_test", "deathart");
+Translate.GetBlock("first_block.block_test");
+Translate.GetBlock("deux_block.block_test", "deathart");
 
 //Add line
 Translate.SetLine("test_set", "settings add");
