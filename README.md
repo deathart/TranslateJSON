@@ -13,17 +13,17 @@ const translatejson = require('translatejson');
 
 let Translate = new translatejson("en");
 
->//Normal
+//Normal
 Translate.GetLine("test_replace", "deathart");
 Translate.GetLine("test");
 
->//Block
+//Block
 Translate.GetBlock("first_block", "block_test");
 Translate.GetBlock("deux_block", "block_test", "deathart");
 
->//Add line
+//Add line
 Translate.SelLine("test_set", "settings add");
 
->//Delete line
+//Delete line
 Translate.Del("test_replace");
 ```
