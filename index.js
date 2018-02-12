@@ -5,9 +5,8 @@ module.exports = class Translate {
 		this.file = files
 		this.error = false
 		this.location = params.Directory || "./locales/"
-		this.ext = params.exts || ".json"
 		this.debug = params.debug || false
-		this.loc = this.location + this.file + this.ext
+		this.loc = this.location + this.file + ".json"
 
 		try {
 			this.data = fs.readFileSync(this.loc)
