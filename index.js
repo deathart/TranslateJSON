@@ -1,10 +1,10 @@
 const fs = require("fs")
 
 module.exports = class Translate {
-	constructor(files, params = {}) {
+	constructor(files, Directory = "./locales") {
 		this.file = files
 		this.error = false
-		this.location = params.Directory || "./locales/"
+		this.location = Directory
 		this.loc = this.location + this.file + ".json"
 
 		try {

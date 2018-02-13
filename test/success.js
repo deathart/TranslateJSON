@@ -1,9 +1,7 @@
 const expect = require("chai").expect
 const translatejson = require("../index")
 
-const Translate = new translatejson("en", {
-	Directory: "./test/locales/",
-})
+const Translate = new translatejson("en", "./test/locales/")
 
 describe("Success", () => {
     describe("Get", () => {
