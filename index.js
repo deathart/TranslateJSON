@@ -32,7 +32,6 @@ module.exports = class Translate {
 				if (typeof this.data[Lines] !== "undefined") {
 					return this.data[Lines]
 				}
-
 				return false
 			}
 		}
@@ -47,7 +46,6 @@ module.exports = class Translate {
 
 				return false
 			}, this.data || self)
-
 			if (result) {
 				if (replaces) {
 					return result.replace("%s", replaces)
@@ -60,35 +58,30 @@ module.exports = class Translate {
 	}
 
 	SetLine(key, value) {
-        if (this.error === false) {
-            const jsonObj = this.data
-
-            jsonObj[key] = value
-
-            try {
-                fs.writeFileSync(this.loc, JSON.stringify(jsonObj, null, 2))
-                return true;
-            } catch (err) {
-                return false
-            }
-        }
+		if (this.error === false) {
+			this.data[key] = value
+			try {
+				fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
+				return true
+			} catch (err) {
+				return false
+			}
+		}
 	}
 
 	Del(json_value = {}) {
-        if (this.error === false) {
-            const jsonObj = this.data
-
-            if (typeof jsonObj[json_value] !== "undefined") {
-                delete jsonObj[json_value]
-                try {
-                    fs.writeFileSync(this.loc, JSON.stringify(jsonObj, null, 2))
-                    return true;
-                } catch (err) {
-                    return false
-                }
-            } else {
-                return false
-            }
-        }
+		if (this.error === false) {
+			if (typeof this.data[json_value] !== "undefined") {
+				delete this.data[json_value]
+				try {
+					fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
+					return true
+				} catch (err) {
+					return false
+				}
+			} else {
+				return false
+			}
+		}
 	}
 }
