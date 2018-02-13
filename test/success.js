@@ -30,7 +30,7 @@ describe("Success", () => {
 
     describe("Remove", () => {
         it("Remove", (done) => {
-            expect(Translate.Del("test")).to.be.undefined
+            expect(Translate.Del("test")).to.be.true
             done()
         })
     })

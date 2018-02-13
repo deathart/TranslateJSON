@@ -62,32 +62,37 @@ module.exports = class Translate {
 	}
 
 	SetLine(key, value) {
-		const jsonObj = this.data
+        if (this.error === false) {
+            const jsonObj = this.data
 
-		jsonObj[key] = value
+            jsonObj[key] = value
 
-		try {
-			fs.writeFileSync(this.loc, JSON.stringify(jsonObj, null, 2))
-			return true
-		} catch (err) {
-			return false
-		}
+            try {
+                fs.writeFileSync(this.loc, JSON.stringify(jsonObj, null, 2))
+                return true;
+            } catch (err) {
+                return false
+            }
+        }
+        return false;
 	}
 
 	Del(json_value = {}) {
-		const jsonObj = this.data
+        if (this.error === false) {
+            const jsonObj = this.data
 
-		if (typeof jsonObj[json_value] !== "undefined") {
-			delete jsonObj[json_value]
-
-			fs.writeFile(this.loc, JSON.stringify(jsonObj, null, 2), (err) => {
-				if (!err) {
-					return true
-				}
-				return false
-			})
-		} else {
-			return false
-		}
+            if (typeof jsonObj[json_value] !== "undefined") {
+                delete jsonObj[json_value]
+                try {
+                    fs.writeFileSync(this.loc, JSON.stringify(jsonObj, null, 2))
+                    return true;
+                } catch (err) {
+                    return false
+                }
+            } else {
+                return false
+            }
+        }
+        return false;
 	}
 }
