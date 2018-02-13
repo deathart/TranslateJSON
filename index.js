@@ -36,7 +36,6 @@ module.exports = class Translate {
 				return false
 			}
 		}
-		return false
 	}
 
 	GetBlock(Lines, replaces = null) {
@@ -58,7 +57,6 @@ module.exports = class Translate {
 			}
 			return false
 		}
-		return false
 	}
 
 	SetLine(key, value) {
@@ -74,7 +72,6 @@ module.exports = class Translate {
                 return false
             }
         }
-        return false;
 	}
 
 	Del(json_value = {}) {
@@ -93,6 +90,5 @@ module.exports = class Translate {
                 return false
             }
         }
-        return false;
 	}
 }
