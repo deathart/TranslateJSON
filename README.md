@@ -10,8 +10,8 @@ npm install --save translatejson
 # Usage : 
 
 ### 1 step
-Créer un dossier locales à la racine de votre projet (Ou à un autre endroit mais n'oubliez pas de le configurer)
-Ensuite créer un fichier en.json
+Create a local folder at the root of your project (or at another location but don't forget to configure it)
+Then create a. json file
 
 ### 2 step
 ```js
