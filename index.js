@@ -8,7 +8,8 @@ module.exports = class Translate {
 		this.loc = `${this.location + this.file}.json`
 
 		try {
-			this.data = fs.readFileSync(this.loc)
+			const fileContent = fs.readFileSync(this.loc)
+			this.data = JSON.parse(fileContent)
 		} catch (err) {
 			this.error = true
 			if (err.code === "ENOENT") {
@@ -23,13 +24,13 @@ module.exports = class Translate {
 		if (this.error === false) {
 			if (replace !== null) {
 				try {
-					return JSON.parse(this.data)[Lines].replace("%s", replace)
+					return this.data[Lines].replace("%s", replace)
 				} catch (error) {
 					return false
 				}
 			} else {
-				if (typeof JSON.parse(this.data)[Lines] !== "undefined") {
-					return JSON.parse(this.data)[Lines]
+				if (typeof this.data[Lines] !== "undefined") {
+					return this.data[Lines]
 				}
 
 				return false
@@ -46,7 +47,7 @@ module.exports = class Translate {
 				}
 
 				return false
-			}, JSON.parse(this.data) || self)
+			}, this.data || self)
 
 			if (result) {
 				if (replaces) {
@@ -61,7 +62,7 @@ module.exports = class Translate {
 	}
 
 	SetLine(key, value) {
-		const jsonObj = JSON.parse(this.data)
+		const jsonObj = this.data
 
 		jsonObj[key] = value
 
@@ -74,7 +75,7 @@ module.exports = class Translate {
 	}
 
 	Del(json_value = {}) {
-		const jsonObj = JSON.parse(this.data)
+		const jsonObj = this.data
 
 		if (typeof jsonObj[json_value] !== "undefined") {
 			delete jsonObj[json_value]
