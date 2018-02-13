@@ -8,6 +8,12 @@ npm install --save translatejson
 ```
 
 # Usage : 
+
+### 1 step
+Créer un dossier locales à la racine de votre projet (Ou à un autre endroit mais n'oubliez pas de le configurer)
+Ensuite créer un fichier en.json
+
+### 2 step
 ```js
 const translatejson = require('translatejson');
 
@@ -26,4 +32,10 @@ Translate.SetLine("test_set", "settings add");
 
 //Delete line
 Translate.Del("test_replace");
+```
+
+### 3 step (Optional)
+To configure your folder
+```js
+let Translate = new translatejson("en", "./translations");
 ```
