@@ -45,7 +45,7 @@ module.exports = class Translate {
 				}
 
 				return false
-			}, this.data || self)
+			}, this.data)
 			if (result) {
 				if (replaces) {
 					return result.replace("%s", replaces)
