@@ -87,7 +87,6 @@ module.exports = class Translate {
 				if (!err) {
 					return true
 				}
-				console.error(`[ERROR] : Line ${json_value} not found`)
 				return false
 			})
 		} else {
