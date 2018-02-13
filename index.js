@@ -5,7 +5,7 @@ module.exports = class Translate {
 		this.file = files
 		this.error = false
 		this.location = Directory
-		this.loc = this.location + this.file + ".json"
+		this.loc = `${this.location + this.file}.json`
 
 		try {
 			this.data = fs.readFileSync(this.loc)
@@ -39,35 +39,30 @@ module.exports = class Translate {
 	}
 
 	GetBlock(Lines, replaces = null) {
-        if (this.error === false) {
+		if (this.error === false) {
+			const result = Lines.split(".").reduce((prev, curr) => {
+				if (prev) {
+					return prev[curr]
+				}
 
-            let result = Lines.split('.').reduce(function(prev, curr) {
-                if(prev) {
-                    return prev[curr];
-                }
-                else {
-                    return false;
-                }
-            }, JSON.parse(this.data) || self);
+				return false
+			}, JSON.parse(this.data) || self)
 
-            if(result) {
-                if (replaces) {
-                    return result.replace("%s", replaces)
-                }
-                else {
-                    return result;
-                }
-            }
-            return false;
-        }
-        return false
+			if (result) {
+				if (replaces) {
+					return result.replace("%s", replaces)
+				}
+
+				return result
+			}
+			return false
+		}
+		return false
 	}
 
-    resolve(path, obj) {
-        return path.split('.').reduce(function(prev, curr) {
-            return prev ? prev[curr] : null
-        }, obj || self)
-    }
+	resolve(path, obj) {
+		return path.split(".").reduce((prev, curr) => (prev ? prev[curr] : null), obj || self)
+	}
 
 	SetLine(key, value) {
 		const jsonObj = JSON.parse(this.data)
