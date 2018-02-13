@@ -60,10 +60,6 @@ module.exports = class Translate {
 		return false
 	}
 
-	resolve(path, obj) {
-		return path.split(".").reduce((prev, curr) => (prev ? prev[curr] : null), obj || self)
-	}
-
 	SetLine(key, value) {
 		const jsonObj = JSON.parse(this.data)
 
