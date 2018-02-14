@@ -26,6 +26,12 @@ describe("Error", () => {
             })
         })
     })
+    describe("Update", () => {
+        it("Update", (done) => {
+            expect(Translate.Update("test2", "GoodBye")).to.be.false
+            done()
+        })
+    })
     describe("Delete", () => {
         it("error", (done) => {
             expect(Translate.Del("test2")).to.be.false

@@ -28,6 +28,13 @@ describe("Success", () => {
         })
     })
 
+    describe("Update", () => {
+        it("Update", (done) => {
+            expect(Translate.Update("test", "Hello")).to.be.true
+            done()
+        })
+    })
+
     describe("Remove", () => {
         it("Remove", (done) => {
             expect(Translate.Del("test")).to.be.true

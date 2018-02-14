@@ -69,7 +69,24 @@ module.exports = class Translate {
 		}
 	}
 
-	Del(json_value = {}) {
+	Update(key, value) {
+		if (this.error === false) {
+			if (typeof this.data[key] !== "undefined") {
+				this.data[key] = value
+				try {
+					fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
+					return true
+				} catch (err) {
+					return false
+				}
+			}
+			else {
+				return false
+			}
+		}
+	}
+
+	Del(json_value) {
 		if (this.error === false) {
 			if (typeof this.data[json_value] !== "undefined") {
 				delete this.data[json_value]

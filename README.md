@@ -27,6 +27,9 @@ Translate.GetLine("test");
 Translate.GetBlock("first_block.block_test");
 Translate.GetBlock("deux_block.block_test", "deathart");
 
+//Update line
+Translate.Update("test", "Hello");
+
 //Add line
 Translate.SetLine("test_set", "settings add");
 
