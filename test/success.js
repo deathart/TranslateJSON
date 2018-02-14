@@ -43,6 +43,10 @@ describe("Success", () => {
     })
 
     describe("Set", () => {
+        before(() => {
+            Translate.Del("test");
+        })
+
         it("Set", (done) => {
             expect(Translate.SetLine("test", "Hello")).to.be.true
             done()

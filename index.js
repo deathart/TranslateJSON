@@ -22,30 +22,22 @@ module.exports = class Translate {
 
 	GetLine(Lines, replace = null) {
 		if (this.error === false) {
-			if (replace !== null) {
-				try {
-					return this.data[Lines].replace("%s", replace)
-				} catch (error) {
-					return false
-				}
-			} else {
-				if (typeof this.data[Lines] !== "undefined") {
-					return this.data[Lines]
-				}
-				return false
-			}
+		    if(this.resolve(Lines)) {
+                if (replace !== null) {
+                    return this.resolve(Lines).replace("%s", replace)
+                } else {
+                    return this.resolve(Lines)
+                }
+            }
+            else {
+		        return false
+            }
 		}
 	}
 
 	GetBlock(Lines, replaces = null) {
 		if (this.error === false) {
-			const result = Lines.split(".").reduce((prev, curr) => {
-				if (prev) {
-					return prev[curr]
-				}
-
-				return false
-			}, this.data)
+			const result = this.resolve(Lines)
 			if (result) {
 				if (replaces) {
 					return result.replace("%s", replaces)
@@ -59,20 +51,24 @@ module.exports = class Translate {
 
 	SetLine(key, value) {
 		if (this.error === false) {
-			this.data[key] = value
-			try {
-				fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
-				return true
-			} catch (err) {
-				return false
-			}
+            if (this.resolve(key) !== false) {
+                this.data[key] = value
+                try {
+                    fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
+                    return true
+                } catch (err) {
+                    return false
+                }
+            }
+            return false
 		}
 	}
 
 	Update(key, value) {
 		if (this.error === false) {
-			if (typeof this.data[key] !== "undefined") {
-				this.data[key] = value
+            let res = this.resolve(key);
+			if (res) {
+                res = value
 				try {
 					fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
 					return true
@@ -86,10 +82,10 @@ module.exports = class Translate {
 		}
 	}
 
-	Del(json_value) {
+	Del(key) {
 		if (this.error === false) {
-			if (typeof this.data[json_value] !== "undefined") {
-				delete this.data[json_value]
+			if (this.resolve(key)) {
+				delete this.resolve(key)
 				try {
 					fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
 					return true
@@ -101,4 +97,19 @@ module.exports = class Translate {
 			}
 		}
 	}
+
+    resolve(key) {
+        if (key.indexOf('.') > -1) {
+            return key.split('.').reduce(function (prev, curr) {
+                return prev ? prev[curr] : false
+            }, this.data)
+        }
+        else {
+            if (typeof this.data[key] !== "undefined") {
+                return this.data[key]
+            } else {
+                return false
+            }
+        }
+    }
 }
