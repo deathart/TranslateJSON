@@ -9,8 +9,7 @@ module.exports = class Translate {
 		this.loc = `${this.location + this.file}.json`
 
 		try {
-			const fileContent = fs.readFileSync(this.loc)
-			this.data = JSON.parse(fileContent)
+			this.data = JSON.parse(fs.readFileSync(this.loc))
 			this.error = false
 		} catch (err) {
 			throw new Error("[ERROR] : The translation of the '" + files+ "' file is not found !")
