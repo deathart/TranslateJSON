@@ -25,7 +25,7 @@ module.exports = class Translate {
 			}
 		}
 		else {
-            throw new Error("[ERROR] : This key doesn't exist")
+			throw new Error("[ERROR] : This key doesn't exist")
 		}
 
 	}
@@ -39,27 +39,27 @@ module.exports = class Translate {
 			return this.resolve(Lines)
 		}
 		else {
-            throw new Error("[ERROR] : This block doesn't exist")
+			throw new Error("[ERROR] : This block doesn't exist")
 		}
 	}
 
 	SetLine(key, value) {
 		if (!this.error && this.resolve(key) !== false) {
-            this.data[key] = value
-            try {
-                fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
-                return true
-            } catch (err) {
-                throw new Error("[ERROR] : Unable to add a key")
-            }
-        }
+			this.data[key] = value
+			try {
+				fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
+				return true
+			} catch (err) {
+				throw new Error("[ERROR] : Unable to add a key")
+			}
+		}
 		else {
 			throw new Error("[ERROR] : This key already exists")
 		}
 	}
 
 	Update(key, value) {
-        if (!this.error && this.resolve(key)) {
+		if (!this.error && this.resolve(key)) {
         	let res = this.resolve(key)
 			res = value
 			try {
