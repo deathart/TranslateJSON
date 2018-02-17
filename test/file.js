@@ -14,4 +14,10 @@ describe("File", () => {
         }).to.throw("[ERROR] : The translation of the 'es' file is not found !")
         done()
     })
+    it("Not JSON Format", (done) => {
+        expect(function() {
+            new translatejson("de", "./test/locales/")
+        }).to.throw("[ERROR] : The translation of the 'de' file is not found !")
+        done()
+    })
 });
