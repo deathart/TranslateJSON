@@ -7,21 +7,29 @@ describe("Error", () => {
     describe("Get", () => {
         describe("Normal", () => {
             it("notreplace", (done) => {
-                expect(Translate.GetLine("noexists")).to.be.false
+                expect(function() {
+                    Translate.GetLine("noexists")
+                }).to.throw("[ERROR] : This key doesn't exist")
                 done()
             })
             it("replace", (done) => {
-                expect(Translate.GetLine("noexists", "error")).to.be.false
+                expect(function() {
+                    Translate.GetLine("noexists", "error")
+                }).to.throw("[ERROR] : This key doesn't exist")
                 done()
             })
         })
         describe("Block", () => {
             it("notreplace", (done) => {
-                expect(Translate.GetBlock("c_block.block_test_500")).to.be.false
+                expect(function() {
+                    Translate.GetBlock("c_block.block_test_500")
+                }).to.throw("[ERROR] : This block doesn't exist")
                 done()
             })
             it("replace", (done) => {
-                expect(Translate.GetBlock("d_block.block_test_a", "deathart")).to.be.false
+                expect(function() {
+                    Translate.GetBlock("d_block.block_test_a", "deathart")
+                }).to.throw("[ERROR] : This block doesn't exist")
                 done()
             })
         })
@@ -29,19 +37,19 @@ describe("Error", () => {
     it("Update", (done) => {
         expect(function() {
             Translate.Update("test2", "GoodBye")
-        }).to.throw("[ERROR] : The key does not exist")
+        }).to.throw("[ERROR] : This key does not exist")
         done()
     })
     it("Delete", (done) => {
         expect(function() {
             Translate.Del("test2")
-        }).to.throw("[ERROR] : The key does not exist")
+        }).to.throw("[ERROR] : This key does not exist")
         done()
     })
     it("Set", (done) => {
         expect(function() {
             Translate.SetLine("hellonot")
-        }).to.throw("[ERROR] : The key already exists")
+        }).to.throw("[ERROR] : This key already exists")
         done()
     })
 });
