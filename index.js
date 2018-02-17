@@ -46,12 +46,8 @@ module.exports = class Translate {
 	SetLine(key, value) {
 		if (!this.error && this.resolve(key) !== false) {
 			this.data[key] = value
-			try {
-				fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
-				return true
-			} catch (err) {
-				throw new Error("[ERROR] : Unable to add a key")
-			}
+			fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
+			return true
 		}
 		else {
 			throw new Error("[ERROR] : This key already exists")
@@ -62,12 +58,8 @@ module.exports = class Translate {
 		if (!this.error && this.resolve(key)) {
         	let res = this.resolve(key)
 			res = value
-			try {
-				fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
-				return true
-			} catch (err) {
-				throw new Error("[ERROR] : Unable to change key")
-			}
+			fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
+			return true
 		}
 		else {
 			throw new Error("[ERROR] : This key does not exist")
@@ -78,12 +70,8 @@ module.exports = class Translate {
 	Del(key) {
 		if (!this.error && this.resolve(key)) {
 			delete this.resolve(key)
-			try {
-				fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
-				return true
-			} catch (err) {
-				throw new Error("[ERROR] : Can't delete key")
-			}
+			fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
+			return true
 		} else {
 			throw new Error("[ERROR] : This key does not exist")
 		}
