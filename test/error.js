@@ -26,16 +26,22 @@ describe("Error", () => {
             })
         })
     })
-    describe("Update", () => {
-        it("Update", (done) => {
-            expect(Translate.Update("test2", "GoodBye")).to.be.false
-            done()
-        })
+    it("Update", (done) => {
+        expect(function() {
+            Translate.Update("test2", "GoodBye")
+        }).to.throw("[ERROR] : The key does not exist")
+        done()
     })
-    describe("Delete", () => {
-        it("error", (done) => {
-            expect(Translate.Del("test2")).to.be.false
-            done()
-        })
+    it("Delete", (done) => {
+        expect(function() {
+            Translate.Del("test2")
+        }).to.throw("[ERROR] : The key does not exist")
+        done()
+    })
+    it("Set", (done) => {
+        expect(function() {
+            Translate.SetLine("hellonot")
+        }).to.throw("[ERROR] : The key already exists")
+        done()
     })
 });

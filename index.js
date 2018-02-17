@@ -4,20 +4,16 @@ module.exports = class Translate {
 
 	constructor(files, Directory = "./locales") {
 		this.file = files
-		this.error = false
+		this.error = true
 		this.location = Directory
 		this.loc = `${this.location + this.file}.json`
 
 		try {
 			const fileContent = fs.readFileSync(this.loc)
 			this.data = JSON.parse(fileContent)
+			this.error = false
 		} catch (err) {
-			this.error = true
-			if (err.code === "ENOENT") {
-				throw "[ERROR] : The translation of the '" + files+ "' file is not found !"
-			} else {
-				throw "[ERROR] : " + err
-			}
+			throw new Error("[ERROR] : The translation of the '" + files+ "' file is not found !")
 		}
 	}
 
@@ -58,10 +54,12 @@ module.exports = class Translate {
 					fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
 					return true
 				} catch (err) {
-					return false
+					throw new Error("[ERROR] : Unable to add a key")
 				}
 			}
-			return false
+			else {
+				throw new Error("[ERROR] : The key already exists")
+			}
 		}
 	}
 
@@ -74,11 +72,11 @@ module.exports = class Translate {
 					fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
 					return true
 				} catch (err) {
-					return false
+					throw new Error("[ERROR] : Unable to change key")
 				}
 			}
 			else {
-				return false
+				throw new Error("[ERROR] : The key does not exist")
 			}
 		}
 	}
@@ -91,10 +89,10 @@ module.exports = class Translate {
 					fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
 					return true
 				} catch (err) {
-					return false
+					throw new Error("[ERROR] : Can't delete key")
 				}
 			} else {
-				return false
+				throw new Error("[ERROR] : The key does not exist")
 			}
 		}
 	}
