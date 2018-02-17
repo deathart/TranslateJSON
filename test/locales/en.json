@@ -1,8 +1,8 @@
 {
-  "test_replace": "Hello %s",
-  "block_test": {
-    "first_block": "[EN]block",
-    "deux_block": "[EN]block %s test"
+  "hello replace": "Hello %s",
+  "block": {
+    "first_block": "[EN] block",
+    "sec_block": "[EN] block %s replace"
   },
-  "test": "Hello"
+  "hello": "Hello"
 }
