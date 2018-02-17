@@ -1,7 +1,8 @@
 const fs = require("fs")
 
 module.exports = class Translate {
-	constructor(files, Directory = "./locales") {
+
+    constructor(files, Directory = "./locales") {
 		this.file = files
 		this.error = false
 		this.location = Directory
@@ -13,9 +14,9 @@ module.exports = class Translate {
 		} catch (err) {
 			this.error = true
 			if (err.code === "ENOENT") {
-				console.error(`[ERROR] : Translation file not found ! (${this.loc})`)
+				throw "[ERROR] : The translation of the '" + files+ "' file is not found !";
 			} else {
-				console.error(`[ERROR] : (${err})`)
+				throw "[ERROR] : " + err;
 			}
 		}
 	}
