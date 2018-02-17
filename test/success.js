@@ -52,4 +52,15 @@ describe("Success", () => {
             done()
         })
     })
+
+    describe("Resolve", () => {
+        it("Normal", (done) => {
+            expect(Translate.resolve("hello")).to.equal("Bonjour")
+            done()
+        })
+        it("Block", (done) => {
+            expect(Translate.resolve("block.sec_block")).to.equal("[FR] block %s remplacé")
+            done()
+        })
+    })
 });

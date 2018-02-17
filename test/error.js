@@ -52,4 +52,14 @@ describe("Error", () => {
         }).to.throw("[ERROR] : This key already exists")
         done()
     })
+    describe("Resolve", () => {
+        it("Normal", (done) => {
+            expect(Translate.resolve("test2")).to.be.false
+            done()
+        })
+        it("Block", (done) => {
+            expect(Translate.resolve("block.not_block")).to.be.undefined
+            done()
+        })
+    })
 });
