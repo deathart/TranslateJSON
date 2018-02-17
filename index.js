@@ -18,7 +18,7 @@ module.exports = class Translate {
 	}
 
 	GetLine(Lines, replace = null) {
-		if (this.error === false) {
+		if (!this.error) {
 		    if(this.resolve(Lines)) {
 				if (replace !== null) {
 					return this.resolve(Lines).replace("%s", replace)
@@ -33,7 +33,7 @@ module.exports = class Translate {
 	}
 
 	GetBlock(Lines, replaces = null) {
-		if (this.error === false) {
+        if (!this.error) {
 			const result = this.resolve(Lines)
 			if (result) {
 				if (replaces) {
@@ -47,7 +47,7 @@ module.exports = class Translate {
 	}
 
 	SetLine(key, value) {
-		if (this.error === false) {
+        if (!this.error) {
 			if (this.resolve(key) !== false) {
 				this.data[key] = value
 				try {
@@ -64,7 +64,7 @@ module.exports = class Translate {
 	}
 
 	Update(key, value) {
-		if (this.error === false) {
+        if (!this.error) {
 			let res = this.resolve(key)
 			if (res) {
 				res = value
@@ -82,7 +82,7 @@ module.exports = class Translate {
 	}
 
 	Del(key) {
-		if (this.error === false) {
+        if (!this.error) {
 			if (this.resolve(key)) {
 				delete this.resolve(key)
 				try {
