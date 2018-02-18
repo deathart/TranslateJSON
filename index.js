@@ -1,20 +1,36 @@
-const fs = require("fs")
+const fs = require("fs");
 
 module.exports = class Translate {
 
+	/**
+     * Initialize the class
+     *
+     * @param files
+     * @param Directory
+     * @throws Will throw an error if file does not exist
+     */
 	constructor(files, Directory = "./locales/") {
-		this.error = true
-		this.location = Directory
-		this.loc = `${this.location + files}.json`
+		this.error = true;
+		this.location = Directory;
+		this.loc = `${this.location + files}.json`;
 
 		try {
-			this.data = JSON.parse(fs.readFileSync(this.loc))
+			this.data = JSON.parse(fs.readFileSync(this.loc));
 			this.error = false
 		} catch (err) {
 			throw new Error("[ERROR] : The translation of the '" + files+ "' file is not found !")
 		}
 	}
 
+	/**
+     * Get Line
+     *
+     * @param Lines
+     * @param replace
+     * @throws Will throw an error if key does not exist
+     * @returns {string}
+     * @constructor
+     */
 	GetLine(Lines, replace = null) {
 		if(!this.error && this.resolve(Lines)) {
 			if (replace !== null) {
@@ -29,6 +45,15 @@ module.exports = class Translate {
 
 	}
 
+	/**
+     * Get block
+     *
+     * @param Lines
+     * @param replaces
+     * @throws Will throw an error if block does not exist
+     * @returns {string}
+     * @constructor
+     */
 	GetBlock(Lines, replaces = null) {
 
 		if (!this.error && this.resolve(Lines)) {
@@ -42,10 +67,19 @@ module.exports = class Translate {
 		}
 	}
 
+	/**
+     * Add key
+     *
+     * @param key
+     * @param value
+     * @throws Will throw an error if key already exists
+     * @returns {boolean}
+     * @constructor
+     */
 	SetLine(key, value) {
 		if (!this.error && this.resolve(key) !== false) {
-			this.data[key] = value
-			fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
+			this.data[key] = value;
+			fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2));
 			return true
 		}
 		else {
@@ -53,11 +87,21 @@ module.exports = class Translate {
 		}
 	}
 
+	/**
+     * Update key
+     *
+     * @param key
+     * @param value
+     * @throws Will throw an error if key does not exist
+     * @returns {boolean}
+     * @constructor
+     * @todos Redesign of the function to allow to change the key
+     */
 	Update(key, value) {
 		if (!this.error && this.resolve(key)) {
-        	let res = this.resolve(key)
-			res = value
-			fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
+        	let res = this.resolve(key);
+			res = value;
+			fs.writeFileSync(this.loc, JSON.stringify(res, null, 2));
 			return true
 		}
 		else {
@@ -66,10 +110,18 @@ module.exports = class Translate {
 
 	}
 
+	/**
+     * Delete key
+     *
+     * @param key
+     * @throws Will throw an error if key does not exist
+     * @returns {boolean}
+     * @constructor
+     */
 	Del(key) {
 		if (!this.error && this.resolve(key)) {
-			delete this.resolve(key)
-			fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2))
+			delete this.resolve(key);
+			fs.writeFileSync(this.loc, JSON.stringify(this.data, null, 2));
 			return true
 		} else {
 			throw new Error("[ERROR] : This key does not exist")
@@ -77,6 +129,11 @@ module.exports = class Translate {
 
 	}
 
+	/**
+     * Resolve value by key
+     * @param key
+     * @returns {(string|boolean)} return bool if the key does not exist
+     */
 	resolve(key) {
 		if (key.indexOf(".") > -1) {
 			return key.split(".").reduce(function (prev, curr) {
@@ -91,4 +148,4 @@ module.exports = class Translate {
 			}
 		}
 	}
-}
+};
