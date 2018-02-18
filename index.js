@@ -4,6 +4,7 @@ module.exports = class Translate {
 
 	constructor(files, Directory = "./locales") {
 		this.file = files
+	constructor(files, Directory = "./locales/") {
 		this.error = true
 		this.location = Directory
 		this.loc = `${this.location + this.file}.json`

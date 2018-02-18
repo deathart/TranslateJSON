@@ -9,11 +9,11 @@ npm install --save translatejson
 
 # Usage : 
 
-### 1) 
+### 1) Step
 Create a local folder at the root of your project (or at another location but don't forget to configure it)
 Then create a. json file
 
-### 2)
+### 2) Step
 index.js : 
 ```js
 const translatejson = require('translatejson');
@@ -53,5 +53,5 @@ Translate.Del("hello");
 ### 3) step (Optional)
 To configure your folder
 ```js
-let Translate = new translatejson("en", "./translations");
+let Translate = new translatejson("en", "./translations/");
 ```
