@@ -5,8 +5,8 @@ module.exports = class Translate {
 	/**
      * Initialize the class
      *
-     * @param files
-     * @param Directory
+     * @param {string} files - Files name
+     * @param {string} Directory - File path
      * @throws Will throw an error if file does not exist
      */
 	constructor(files, Directory = "./locales/") {
@@ -25,8 +25,8 @@ module.exports = class Translate {
 	/**
      * Get Line
      *
-     * @param Lines
-     * @param replace
+     * @param {string} Lines - Key name
+     * @param {string} replace - Replace string in value
      * @throws Will throw an error if key does not exist
      * @returns {string}
      * @constructor
@@ -48,8 +48,8 @@ module.exports = class Translate {
 	/**
      * Get block
      *
-     * @param Lines
-     * @param replaces
+     * @param {string} Lines - Key name
+     * @param {string} replaces - Replace string in value
      * @throws Will throw an error if block does not exist
      * @returns {string}
      * @constructor
@@ -70,8 +70,8 @@ module.exports = class Translate {
 	/**
      * Add key
      *
-     * @param key
-     * @param value
+     * @param {string} key - Set key
+     * @param {string} value - Set value
      * @throws Will throw an error if key already exists
      * @returns {boolean}
      * @constructor
@@ -90,8 +90,8 @@ module.exports = class Translate {
 	/**
      * Update key
      *
-     * @param key
-     * @param value
+     * @param {string} key - Key name
+     * @param {string} value - New value
      * @throws Will throw an error if key does not exist
      * @returns {boolean}
      * @constructor
@@ -113,7 +113,7 @@ module.exports = class Translate {
 	/**
      * Delete key
      *
-     * @param key
+     * @param {string} key - Key name
      * @throws Will throw an error if key does not exist
      * @returns {boolean}
      * @constructor
@@ -131,7 +131,7 @@ module.exports = class Translate {
 
 	/**
      * Resolve value by key
-     * @param key
+     * @param {string} key - Key name
      * @returns {(string|boolean)} return bool if the key does not exist
      */
 	resolve(key) {
