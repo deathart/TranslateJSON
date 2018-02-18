@@ -2,12 +2,10 @@ const fs = require("fs")
 
 module.exports = class Translate {
 
-	constructor(files, Directory = "./locales") {
-		this.file = files
 	constructor(files, Directory = "./locales/") {
 		this.error = true
 		this.location = Directory
-		this.loc = `${this.location + this.file}.json`
+		this.loc = `${this.location + files}.json`
 
 		try {
 			this.data = JSON.parse(fs.readFileSync(this.loc))

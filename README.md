@@ -55,3 +55,6 @@ To configure your folder
 ```js
 let Translate = new translatejson("en", "./translations/");
 ```
+
+# Tests : 
+Run tests using npm test.
