@@ -6,7 +6,8 @@
   "scripts": {
     "test": "nyc mocha",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "eslint index.js --fix"
+    "lint": "eslint index.js --fix",
+    "docs": "jsdoc -c jsdoc.json -f index.js reamde.md"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -30,7 +31,9 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
+    "docdash": "^0.4.0",
     "eslint": "^4.18.0",
+    "jsdoc": "^3.5.5",
     "mocha": "^5.0.1",
     "nyc": "^11.5.0"
   }
