@@ -1,5 +1,9 @@
 const fs = require("fs");
 
+/**
+ * Translation system class
+ * @class Translate
+ */
 module.exports = class Translate {
 
 	/**
@@ -8,6 +12,7 @@ module.exports = class Translate {
      * @param {string} files - Files name
      * @param {string} Directory - File path
      * @throws Will throw an error if file does not exist
+	 * @constructor
      */
 	constructor(files, Directory = "./locales/") {
 		this.error = true;
@@ -133,6 +138,7 @@ module.exports = class Translate {
      * Resolve value by key
      * @param {string} key - Key name
      * @returns {(string|boolean)} return bool if the key does not exist
+	 * @constructor
      */
 	resolve(key) {
 		if (key.indexOf(".") > -1) {

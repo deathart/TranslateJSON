@@ -7,7 +7,7 @@
     "test": "nyc mocha",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint index.js --fix",
-    "docs": "jsdoc -c jsdoc.json -f index.js reamde.md"
+    "docs": "jsdoc index.js -c jsdoc.json --readme README.md"
   },
   "engines": {
     "node": ">=8.0.0"
