@@ -2,30 +2,30 @@
 
 Translation and translation management system using json files
 
-### Table of Contents
+## Table of Contents
 
--   [Install](#Install)
--   [API](#API)
-    - [Constructor](#Constructor)
-    - [GetLine](#GetLine)
-    - [GetBlock](#GetBlock)
-    - [SetLine](#SetLine)
-    - [Update](#Update)
-    - [Del](#Del)
+-   [Install](#install)
+-   [API](#cli)
+    - [Constructor](#constructor)
+    - [GetLine](#getline)
+    - [GetBlock](#getblock)
+    - [SetLine](#setline)
+    - [Update](#update)
+    - [Del](#del)
     - [resolve](#resolve)
--   [Tests](#Tests)
--   [Helps](#Helps)
+-   [Tests](#tests)
+-   [Helps](#helps)
 
-# Install :
+## Install :
 ```shell
 npm install --save translatejson
 ```
 Create a local folder at the root of your project (or at another location but don't forget to configure it)
 Then create a en.json, fr.json and other xx.json file
 
-# API : 
+## API : 
 
-## Constructor
+### Constructor
 Initialize the class
 
 **Parameters**
@@ -39,7 +39,7 @@ const translatejson = require("../index")
 let Translate = new translatejson("fr", "./resources/locales/");
 ```
 
-## Get Line
+### Get Line
 Select the line defined by the key
 
 **Parameters**
@@ -54,7 +54,7 @@ Translate.GetLine("hello users", "deathart");
 
 Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
 
-## Get Block
+### Get Block
 Select block defined by the key
 
 **Parameters**
@@ -69,7 +69,7 @@ Translate.GetBlock("block.sec_block", "deathart");
 
 Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
-## SetLine
+### SetLine
 Add a key to the json file
 
 **Parameters**
@@ -83,7 +83,7 @@ Translate.SetLine("good bye", "Good Bye");
 
 Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
-## Update
+### Update
 Update a key in the json file
 
 **Parameters**
@@ -97,7 +97,7 @@ Translate.Update("hello", "Bonjour");
 
 Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
-## Del
+### Del
 Deletes a key in the json file
 
 **Parameters**
@@ -110,7 +110,7 @@ Translate.Del("hello");
 
 Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
-## resolve
+### resolve
 finds a key in the json file
 
 **Parameters**
@@ -125,10 +125,10 @@ Translate.resolve("block.first_bloc");
 Returns **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | [boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean))** 
 
 
-# Tests : 
+## Tests : 
 ```shell
 npm test
 ```
 
-# Helps :
+## Helps :
 Don't hesitate to help this project, to improve it to make it grow, even constructive criticism helps.
