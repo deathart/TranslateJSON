@@ -28,7 +28,7 @@ module.exports = class Translate {
 	}
 
 	/**
-     * Get Line
+     * Select the line defined by the key
      *
      * @param {string} Lines - Key name
      * @param {string} replace - Replace string in value
@@ -51,7 +51,7 @@ module.exports = class Translate {
 	}
 
 	/**
-     * Get block
+     * Select block defined by the key
      *
      * @param {string} Lines - Key name
      * @param {string} replaces - Replace string in value
@@ -73,7 +73,7 @@ module.exports = class Translate {
 	}
 
 	/**
-     * Add key
+     * Add a key to the json file
      *
      * @param {string} key - Set key
      * @param {string} value - Set value
@@ -93,7 +93,7 @@ module.exports = class Translate {
 	}
 
 	/**
-     * Update key
+     * Update a key in the json file
      *
      * @param {string} key - Key name
      * @param {string} value - New value
@@ -116,7 +116,7 @@ module.exports = class Translate {
 	}
 
 	/**
-     * Delete key
+     * Deletes a key in the json file
      *
      * @param {string} key - Key name
      * @throws Will throw an error if key does not exist
@@ -135,7 +135,7 @@ module.exports = class Translate {
 	}
 
 	/**
-     * Resolve value by key
+     * finds a key in the json file
      * @param {string} key - Key name
      * @returns {(string|boolean)} return bool if the key does not exist
 	 * @constructor
