@@ -21,8 +21,7 @@ module.exports = {
             "double"
         ],
         "semi": [
-            "error",
-            "never"
+            "error"
         ],
         "no-tabs": 0,
         "no-console": 0,
